@@ -19,7 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-/** @noinspection ALL */
+/**
+ * The main activity of the application where the user can edit a message and the recipient phone number
+ * and then send an SMS.
+ */
 public class HomeScreen extends AppCompatActivity {
     private String message = "";
     private String phone = "";
@@ -57,6 +60,11 @@ public class HomeScreen extends AppCompatActivity {
         Button btnEditMessage;
         btnEditMessage =(Button) this.findViewById(R.id.btnEditMessage);
         btnEditMessage.setOnClickListener(new View.OnClickListener() {
+            /**
+             * This method is called when the "Edit Message" button is clicked.
+             *
+             * @param v The view that was clicked (the "Edit Message" button).
+             */
             @Override
             public void onClick(View v) {
                 Intent editIntent;
@@ -78,6 +86,11 @@ public class HomeScreen extends AppCompatActivity {
         Button btnEditSendTo;
         btnEditSendTo=(Button) this.findViewById(R.id.btnEditSendTo);
         btnEditSendTo.setOnClickListener(new View.OnClickListener() {
+            /**
+             * This method is called when the "Edit Send To" button is clicked.
+             *
+             * @param v The view that was clicked (the "Edit Send To" button).
+             */
             @Override
             public void onClick(View v) {
                 Intent editIntent;
@@ -99,6 +112,11 @@ public class HomeScreen extends AppCompatActivity {
         Button btnSend;
         btnSend=(Button) this.findViewById(R.id.btnSend);
         btnSend.setOnClickListener(new View.OnClickListener() {
+            /**
+             * This method is called when the "Send" button is clicked.
+             *
+             * @param v The view that was clicked (the "Send" button).
+             */
             @Override
             public void onClick(View v) {
                 SmsManager smsManager = SmsManager.getDefault();
@@ -109,6 +127,9 @@ public class HomeScreen extends AppCompatActivity {
         });
 
     }
+    /**
+     * Set the summary text in the UI to display the selected recipient phone number and message.
+     */
     private void setSummary(){
         StringBuilder summary;
         summary = new StringBuilder("Sending To:\n");
@@ -119,7 +140,15 @@ public class HomeScreen extends AppCompatActivity {
         tvMessagesDetails.setText(summary);
     }
 
+    /**
+     * This class handles the result of editing the message in the EditMessage activity.
+     */
     public class HandleActivityResultForMessage implements ActivityResultCallback {
+        /**
+         * This method is called when the result of editing the message is received.
+         *
+         * @param dataIn The result data from the EditMessage activity.
+         */
         public void onActivityResult(Object dataIn) {
             ActivityResult result;
             result = (ActivityResult)dataIn;
@@ -132,7 +161,15 @@ public class HomeScreen extends AppCompatActivity {
         }
     }
 
+    /**
+     * This class handles the result of editing the recipient phone number in the EditSendTo activity.
+     */
     public class HandleActivityResultForPhone implements ActivityResultCallback {
+        /**
+         * This method is called when the result of editing the recipient phone number is received.
+         *
+         * @param dataIn The result data from the EditSendTo activity.
+         */
         public void onActivityResult(Object dataIn) {
             ActivityResult result;
             result = (ActivityResult)dataIn;

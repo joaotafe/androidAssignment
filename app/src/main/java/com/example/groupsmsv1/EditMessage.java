@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * This activity allows the user to edit a message and send the edited message
+ * back to the calling activity.
+ */
 public class EditMessage extends AppCompatActivity {
 
     @Override
@@ -27,6 +31,11 @@ public class EditMessage extends AppCompatActivity {
 
         Button btnDone = (Button) this.findViewById(R.id.btnEditMessageDone);
         btnDone.setOnClickListener(new View.OnClickListener() {
+            /**
+             * This method is called when the "Done" button is clicked.
+             *
+             * @param v The view that was clicked (the "Done" button).
+             */
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.putExtra("NEW_MESSAGE", ((EditText) findViewById(R.id.etMessage)).getText().toString());

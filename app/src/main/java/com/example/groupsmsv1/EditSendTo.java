@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * This activity allows the user to edit a phone number and send the edited phone number
+ * back to the calling activity.
+ */
 public class EditSendTo extends AppCompatActivity {
 
     @Override
@@ -30,6 +34,12 @@ public class EditSendTo extends AppCompatActivity {
         // new message via an Intent object
         Button btnDone = (Button) this.findViewById(R.id.btnEditSendToDone);
         btnDone.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             * This method is called when the "Done" button is clicked.
+             *
+             * @param v The view that was clicked (the "Done" button).
+             */
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.putExtra("NEW_PHONE", ((EditText) findViewById(R.id.etPhone)).getText().toString());
